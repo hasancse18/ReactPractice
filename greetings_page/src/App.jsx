@@ -1,35 +1,50 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
 
-function App() {
-  const [count, setCount] = useState(0)
+import React from 'react';
 
+const App = () => {
+  const hours = new Date().getHours();
+  let greet="";
+  let quote =""
+  let bg =""
+  let textColor =""
+  if(hours>=6 && hours <=11)
+  {
+    textColor ="#333333"
+    bg="#FFFAF3"
+    greet = "Good Morning";
+    quote = "Every morning we are born again. What we do today is what matters most."
+  }
+  else if(hours>11 && hours <=16)
+  {
+    textColor ="#006400"
+    bg ="#E0F7E9"
+    greet = "Good Afternoon";
+    quote="Every day brings new choices."
+  }
+  else if (hours>16 && hours<22)
+  {
+    textColor ="#4B0082"
+    bg = "#E6E6FA"
+    greet ="Good Evening";
+    quote="The evening is a time of real experimentation. You never want to look the same way."
+  }
+  else
+  {
+    textColor ="#FFFFFF"
+    bg="#2F2F2F"
+    greet = "Good Night";
+    quote= "The darker the night, the brighter the stars."
+  }
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <div className="box" style={{ backgroundColor: bg ,color:textColor}}>
+        <div className="container">
+          <h1>{greet}</h1>
+          <p>{quote}</p>
+        </div>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
   )
 }
 
-export default App
+export default App;
