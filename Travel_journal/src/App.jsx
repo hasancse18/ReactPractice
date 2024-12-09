@@ -7,12 +7,7 @@ const App = () => {
   const element = Data.map(ele=>{
     return (
       <Entry
-        img = {ele.img}
-        title = {ele.title}
-        country = {ele.country}
-        googleMapsLink = {ele.googleMapsLink}
-        dates = {ele.dates}
-        text = {ele.text}
+        {...ele}
     />
     )
   })
