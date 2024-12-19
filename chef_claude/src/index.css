@@ -62,3 +62,7 @@ main {
   content: "+";
   margin-right: 5px;
 }
+button:hover{
+  cursor: pointer;
+  color: aquamarine;
+}

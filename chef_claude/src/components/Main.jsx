@@ -1,7 +1,7 @@
+import { useState } from "react"
 
 export default function Main() {
-    const ingredients = ["Chicken", "Oregano", "Tomatoes"]
-
+    const [ingredients,setIngredients] = useState(["Chicken", "Oregano", "Tomatoes"])
     const listOfIngredients = ingredients.map((list)=>(
         <li key={list}> {list}</li>
     ))
@@ -9,14 +9,11 @@ export default function Main() {
     function handleSubmit(event)
     {
         event.preventDefault()
+
+        const formData = new FormData(event.currentTarget)
+        const newIngredient = formData.get("ingredient")
+        setIngredients(items=> [...items,newIngredient])
     }
-    /**
-     * Review Challenge:
-     * Map over the list of ingredients and render them as list items
-     * 
-     * Note: We're doing things a weird way here. Don't worry,
-     * we're building up to learning the right way 🙂
-     */
     
     return (
         <main>
