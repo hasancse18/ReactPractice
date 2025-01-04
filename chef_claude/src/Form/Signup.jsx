@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import "./style.css";
 
 const Signup = () => {
-  const initialValues = { email: "", password: "" };
+  const initialValues = { email: "", password: "",status:"", favColor:"",diet:[]};
   const [value, setValue] = useState(initialValues);
   //console.log(value)
   // const handleChange = (event) => {
@@ -16,17 +16,24 @@ const Signup = () => {
   function signUp(event) {
     event.preventDefault();
     const formData = new FormData(event.currentTarget)
-    const email = formData.get("email")
-    const password = formData.get("password")
-    const status = formData.get("status")
+    // const email = formData.get("email")
+    // const password = formData.get("password")
+    // const status = formData.get("status")
     const diet = formData.getAll("diet")
-    const favColor = formData.get("favColor")
+    // const favColor = formData.get("favColor")
     //console.log(favColor);
+    const data = Object.fromEntries(formData);
+    const allData = {
+      ...data,
+      diet
+    }
+
+    //console.log(data)
     
-   setValue({email,password});
+   setValue(allData);
 
   }
-  
+  console.log(value)
   return (
     <section>
       <h1>Signup form</h1>
